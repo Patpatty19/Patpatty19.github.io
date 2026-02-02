@@ -1796,22 +1796,23 @@
   .hero-greeting {
     padding: var(--space-1) var(--space-3);
     font-size: 12px;
-    margin-bottom: var(--space-3);
+    margin-bottom: var(--space-5);
   }
 
   .hero-title {
     font-size: clamp(28px, 8vw, 40px);
-    margin-bottom: var(--space-3);
+    margin-bottom: var(--space-5);
   }
 
   .hero-role {
     font-size: clamp(16px, 4vw, 22px);
-    margin-bottom: var(--space-3);
+    margin-bottom: var(--space-5);
+   
   }
 
   .hero-subtitle {
     font-size: 14px;
-    margin-bottom: var(--space-3);
+    margin-bottom: var(--space-5);
     text-align: center !important;
     justify-content: center !important;
   }
@@ -1819,7 +1820,7 @@
   .hero-description {
     font-size: 13px;
     line-height: 1.7;
-    margin-bottom: var(--space-5);
+    margin-bottom: var(--space-6);
   }
 
   .hero-ctas {
@@ -1828,7 +1829,8 @@
     justify-content: center;
     width: 100%;
     gap: var(--space-2);
-    margin-bottom: var(--space-5);
+    margin-bottom: var(--space-6);
+    margin-top: var(--space-4);
   }
 
   .btn {
