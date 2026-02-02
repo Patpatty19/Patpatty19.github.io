@@ -12,6 +12,12 @@ interface TiltCardProps {
   maxGlare?: number;
 }
 
+// Check if the device is touch-enabled (mobile/tablet)
+const isTouchDevice = () => {
+  if (typeof window === 'undefined') return false;
+  return 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+};
+
 const TiltCard: React.FC<TiltCardProps> = ({
   children,
   className = '',
@@ -25,9 +31,16 @@ const TiltCard: React.FC<TiltCardProps> = ({
   const cardRef = React.useRef<HTMLDivElement>(null);
   const [transform, setTransform] = React.useState('');
   const [glareStyle, setGlareStyle] = React.useState<React.CSSProperties>({});
+  const [isTouch, setIsTouch] = React.useState(false);
+
+  // Detect touch device on mount
+  React.useEffect(() => {
+    setIsTouch(isTouchDevice());
+  }, []);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!cardRef.current) return;
+    // Disable tilt effect on touch devices
+    if (isTouch || !cardRef.current) return;
 
     const rect = cardRef.current.getBoundingClientRect();
     const x = e.clientX - rect.left;
@@ -52,6 +65,8 @@ const TiltCard: React.FC<TiltCardProps> = ({
   };
 
   const handleMouseLeave = () => {
+    // Disable on touch devices
+    if (isTouch) return;
     setTransform('');
     setGlareStyle({});
   };
@@ -65,7 +80,7 @@ const TiltCard: React.FC<TiltCardProps> = ({
       style={{ transform }}
     >
       {children}
-      {glare && <div className="tilt-card-glare" style={glareStyle} />}
+      {glare && !isTouch && <div className="tilt-card-glare" style={glareStyle} />}
     </div>
   );
 };

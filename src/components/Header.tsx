@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { HiMenuAlt3, HiX } from 'react-icons/hi'
+import { FaGithub, FaLinkedinIn, FaEnvelope } from 'react-icons/fa'
 import ThemeToggle from './ThemeToggle'
 import Magnet from './reactbits/Magnet'
 import DecryptedText from './reactbits/DecryptedText'
@@ -14,12 +15,33 @@ const navLinks = [
 const Header: React.FC = () => {
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const [activeSection, setActiveSection] = useState('')
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50)
+
+      // Determine active section based on scroll position
+      const sections = navLinks.map(link => link.href.slice(1))
+      let currentSection = ''
+      
+      for (const sectionId of sections) {
+        const element = document.getElementById(sectionId)
+        if (element) {
+          const rect = element.getBoundingClientRect()
+          // Check if section is in viewport (with some offset for header)
+          if (rect.top <= 150 && rect.bottom > 150) {
+            currentSection = sectionId
+            break
+          }
+        }
+      }
+      
+      setActiveSection(currentSection)
     }
+
     window.addEventListener('scroll', handleScroll)
+    handleScroll() // Initial check
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
@@ -50,20 +72,45 @@ const Header: React.FC = () => {
         </motion.a>
 
         <nav className={`site-nav ${open ? 'open' : ''}`} aria-label="Main navigation">
-          {navLinks.map((link, index) => (
-            <Magnet key={link.href} magnetStrength={3}>
-              <motion.a
-                href={link.href}
-                onClick={() => setOpen(false)}
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
-                whileHover={{ color: 'var(--color-primary)' }}
-              >
-                {link.label}
-              </motion.a>
-            </Magnet>
-          ))}
+          <div className="mobile-nav-header">
+            <span className="mobile-nav-title">Menu</span>
+            <ThemeToggle />
+          </div>
+          
+          <div className="mobile-nav-links">
+            {navLinks.map((link, index) => (
+              <Magnet key={link.href} magnetStrength={3}>
+                <motion.a
+                  href={link.href}
+                  className={activeSection === link.href.slice(1) ? 'active' : ''}
+                  onClick={() => setOpen(false)}
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                >
+                  {link.label}
+                </motion.a>
+              </Magnet>
+            ))}
+          </div>
+
+          <div className="mobile-nav-footer">
+            <p className="mobile-nav-cta">Let's connect</p>
+            <div className="mobile-nav-social">
+              <a href="https://github.com/Patpatty19" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                <FaGithub />
+              </a>
+              <a href="https://www.linkedin.com/in/patrick-miguel-babala/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                <FaLinkedinIn />
+              </a>
+              <a href="mailto:babalapatrick@gmail.com" aria-label="Email">
+                <FaEnvelope />
+              </a>
+            </div>
+            <a href="#contact" className="mobile-nav-contact-btn" onClick={() => setOpen(false)}>
+              Get in Touch
+            </a>
+          </div>
         </nav>
 
         <div className="header-actions">

@@ -1,4 +1,4 @@
-import { useRef, useState, type ReactNode } from 'react';
+import { useRef, useState, useEffect, type ReactNode } from 'react';
 
 interface MagnetProps {
   children: ReactNode;
@@ -24,9 +24,30 @@ const Magnet: React.FC<MagnetProps> = ({
   const magnetRef = useRef<HTMLDivElement>(null);
   const [isActive, setIsActive] = useState(false);
   const [position, setPosition] = useState({ x: 0, y: 0 });
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Detect mobile screen size
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  // Reset position on scroll (fixes stuck issue)
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsActive(false);
+      setPosition({ x: 0, y: 0 });
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (disabled || !magnetRef.current) return;
+    if (disabled || isMobile || !magnetRef.current) return;
 
     const { left, top, width, height } = magnetRef.current.getBoundingClientRect();
     const centerX = left + width / 2;
@@ -40,10 +61,9 @@ const Magnet: React.FC<MagnetProps> = ({
 
     if (distance < maxDistance) {
       setIsActive(true);
-      const strength = 1 - distance / maxDistance;
       setPosition({
-        x: (distanceX / magnetStrength) * strength,
-        y: (distanceY / magnetStrength) * strength
+        x: (distanceX / magnetStrength) * (1 - distance / maxDistance),
+        y: (distanceY / magnetStrength) * (1 - distance / maxDistance)
       });
     } else {
       setIsActive(false);

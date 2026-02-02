@@ -17,3 +17,15 @@
   border-radius: inherit;
   transition: background 0.1s ease-out;
 }
+
+/* Disable tilt effect on mobile/tablet */
+@media (max-width: 768px) {
+  .tilt-card {
+    transform: none !important;
+    transform-style: flat;
+  }
+
+  .tilt-card-glare {
+    display: none !important;
+  }
+}

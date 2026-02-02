@@ -39,23 +39,36 @@ const Footer: React.FC = () => {
 
           <div className="footer-links">
             <h4>Connect</h4>
-            <ul>
-              <li>
-                <a href="https://github.com/Patpatty19" target="_blank" rel="noopener noreferrer">
-                  GitHub
-                </a>
-              </li>
-              <li>
-                <a href="https://www.linkedin.com/in/patrick-miguel-babala/" target="_blank" rel="noopener noreferrer">
-                  LinkedIn
-                </a>
-              </li>
-              <li>
-                <a href="mailto:babalapatrick@gmail.com">
-                  Email
-                </a>
-              </li>
-            </ul>
+            <div className="footer-social">
+              <motion.a
+                className="social-link"
+                href="https://github.com/Patpatty19"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="GitHub"
+                whileHover={{ y: -2 }}
+              >
+                <FaGithub />
+              </motion.a>
+              <motion.a
+                className="social-link"
+                href="https://www.linkedin.com/in/patrick-miguel-babala/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+                whileHover={{ y: -2 }}
+              >
+                <FaLinkedinIn />
+              </motion.a>
+              <motion.a
+                className="social-link"
+                href="mailto:babalapatrick@gmail.com"
+                aria-label="Email"
+                whileHover={{ y: -2 }}
+              >
+                <FaEnvelope />
+              </motion.a>
+            </div>
           </div>
         </div>
 
@@ -63,36 +76,6 @@ const Footer: React.FC = () => {
           <small>
             © {currentYear} Patrick Miguel Babala. All rights reserved.
           </small>
-          <div className="footer-social">
-            <motion.a
-              className="social-link"
-              href="https://github.com/Patpatty19"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="GitHub"
-              whileHover={{ y: -2 }}
-            >
-              <FaGithub />
-            </motion.a>
-            <motion.a
-              className="social-link"
-              href="https://www.linkedin.com/in/patrick-miguel-babala/"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="LinkedIn"
-              whileHover={{ y: -2 }}
-            >
-              <FaLinkedinIn />
-            </motion.a>
-            <motion.a
-              className="social-link"
-              href="mailto:babalapatrick@gmail.com"
-              aria-label="Email"
-              whileHover={{ y: -2 }}
-            >
-              <FaEnvelope />
-            </motion.a>
-          </div>
         </div>
       </div>
     </footer>
