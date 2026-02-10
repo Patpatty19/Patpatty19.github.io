@@ -2003,14 +2003,19 @@
 
   .footer-content {
     gap: var(--space-5);
+
   }
 
   .footer-brand .brand-text {
     display: flex;
+   
   }
+
+  
 
   .footer-brand p {
     font-size: 13px;
+    
   }
 
   .footer-links h4 {
