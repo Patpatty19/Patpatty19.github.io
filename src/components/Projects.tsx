@@ -6,6 +6,16 @@ import GradientText from './reactbits/GradientText'
 // Projects data
 const projects = [
   {
+    title: 'Lakbay',
+    description: 'A mobile application enhancing travel experiences through scenic route navigation and local culture promotion. Developed as our Thesis project.',
+    tech: ['Kotlin', 'Python', 'Firebase'],
+    category: 'Mobile Application',
+    githubUrl: 'https://github.com/Patpatty19/Lakbay_Repository',
+    liveUrl: 'https://www.youtube.com/watch?v=RF9tee4lwOI',
+    image: '/lakbay.png',
+    videoId: 'RF9tee4lwOI',
+  },
+  {
     title: 'PayGoal',
     description: 'A smart allowance and goal tracking Flutter application with Firebase backend, designed for families who want to teach financial literacy.',
     tech: ['Flutter', 'Firebase'],
@@ -81,14 +91,6 @@ const projects = [
     image: '/jupyter.jpg',
     videoId: 'aV1ln-5Xo4k',
   },
-  {
-    title: 'Lakbay',
-    description: 'A mobile application enhancing travel experiences through scenic route navigation and local culture promotion. Developed as our Thesis project.',
-    tech: ['Kotlin', 'Python', 'Firebase'],
-    category: 'Mobile Application',
-    image: '/lakbay.png',
-    wip: true,
-  },
 ]
 
 const Projects: React.FC = () => {
@@ -134,7 +136,6 @@ const Projects: React.FC = () => {
               liveUrl={project.liveUrl}
               image={project.image}
               videoId={'videoId' in project ? project.videoId : undefined}
-              wip={'wip' in project ? project.wip : undefined}
             />
           </motion.div>
         ))}

@@ -101,9 +101,9 @@ const ProjectCard: React.FC<Props> = ({
         {videoId && isHovered ? (
           <iframe
             className="project-video"
-            src={`https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&loop=1&playlist=${videoId}&controls=0&showinfo=0&modestbranding=1`}
+            src={`https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&loop=1&playlist=${videoId}&controls=0&showinfo=0&modestbranding=1&playsinline=1&enablejsapi=1&rel=0&start=1`}
             title={`${title} demo`}
-            allow="autoplay; encrypted-media"
+            allow="autoplay; accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
           />
         ) : image ? (
