@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 
 const URL = 'https://patpatty19.github.io/';
 
-// Test 1 — Page title
+// Test 1 — Page title check
 test('page loads and has correct title', async ({ page }) => {
   await page.goto(URL);
   await expect(page).toHaveTitle(/Patrick Miguel/i);
