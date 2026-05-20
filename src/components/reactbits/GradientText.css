@@ -1,0 +1,8 @@
+.gradient-text-wrapper {
+  display: inline-block;
+  position: relative;
+}
+
+.gradient-text-wrapper.with-border {
+  padding: 4px 8px;
+}
