@@ -2,16 +2,22 @@ import { test, expect } from '@playwright/test';
 
 const URL = 'https://patpatty19.github.io/';
 
+async function openPortfolio(page: import('@playwright/test').Page) {
+  await page.goto(URL, { waitUntil: 'domcontentloaded' });
+  await page.waitForLoadState('networkidle');
+  await expect(page.locator('header.site-header')).toBeVisible();
+}
+
 // Test 1 — Page title check
 test('page loads and has correct title', async ({ page }) => {
-  await page.goto(URL);
+  await openPortfolio(page);
   await expect(page).toHaveTitle(/Patrick Miguel/i);
 });
 
 // Test 2 — Navigation links
 test('navigation links are visible', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
-  await page.goto(URL);
+  await openPortfolio(page);
   const navToggle = page.locator('.nav-toggle');
   await expect(navToggle).toBeVisible();
   await navToggle.click();
@@ -23,7 +29,7 @@ test('navigation links are visible', async ({ page }) => {
 
 // Test 3 — Hero section
 test('hero section displays name and role', async ({ page }) => {
-  await page.goto(URL);
+  await openPortfolio(page);
   const heroSection = page.locator('.hero');
   await expect(heroSection).toBeVisible();
   await expect(heroSection.locator('.hero-title')).toBeVisible();
@@ -33,7 +39,7 @@ test('hero section displays name and role', async ({ page }) => {
 // Test 4 — Projects section
 test('projects section is visible with at least one project', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
-  await page.goto(URL);
+  await openPortfolio(page);
   const navToggle = page.locator('.nav-toggle');
   await expect(navToggle).toBeVisible();
   await navToggle.click();
@@ -46,7 +52,7 @@ test('projects section is visible with at least one project', async ({ page }) =
 
 // Test 5 — GitHub link
 test('GitHub profile link is present and correct', async ({ page }) => {
-  await page.goto(URL);
+  await openPortfolio(page);
   const githubLink = page.locator('footer.site-footer .footer-social a[href*="github.com/Patpatty19"]');
   await expect(githubLink).toBeVisible();
   await expect(githubLink).toHaveAttribute('target', '_blank');
@@ -55,7 +61,7 @@ test('GitHub profile link is present and correct', async ({ page }) => {
 // Test 6 — Mobile responsive
 test('portfolio is responsive on mobile', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
-  await page.goto(URL);
+  await openPortfolio(page);
   await expect(page.locator('.hero')).toBeVisible();
   const bodyWidth = await page.evaluate(() => document.body.scrollWidth);
   const viewportWidth = await page.evaluate(() => window.innerWidth);
