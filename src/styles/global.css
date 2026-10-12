@@ -690,19 +690,9 @@
   position: absolute;
   inset: -3px;
   border-radius: var(--radius-lg);
-  background: linear-gradient(135deg, var(--accent), var(--accent-secondary), var(--accent));
-  background-size: 200% 200%;
-  animation: gradient-rotate 3s ease infinite;
+  background: var(--accent);
+  opacity: 0.3;
   z-index: 1;
-}
-
-@keyframes gradient-rotate {
-  0%, 100% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
 }
 
 .skills-grid {
@@ -1006,10 +996,22 @@
   line-height: 1.6;
   margin-bottom: var(--space-3);
   flex: 1;
-  display: -webkit-box;
-  -webkit-line-clamp: 4;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
+  max-height: 6.4em;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.project-description::-webkit-scrollbar {
+  width: 5px;
+}
+
+.project-description::-webkit-scrollbar-thumb {
+  background: var(--content-border);
+  border-radius: 3px;
+}
+
+.project-description::-webkit-scrollbar-thumb:hover {
+  background: var(--muted);
 }
 
 .project-tech {
@@ -2078,5 +2080,182 @@
 
   .skills-grid {
     gap: var(--space-2);
+  }
+}
+
+/* ===================== */
+/* EXPERIENCE STYLES */
+/* ===================== */
+.experience-timeline {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.experience-item {
+  display: grid;
+  grid-template-columns: 32px 1fr;
+  gap: var(--space-4);
+  position: relative;
+}
+
+.experience-marker {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.experience-marker::before {
+  content: '';
+  position: absolute;
+  top: 6px;
+  bottom: calc(-1 * var(--space-6));
+  width: 2px;
+  background: var(--content-border);
+}
+
+.experience-item:last-child .experience-marker::before {
+  display: none;
+}
+
+.experience-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--accent);
+  border: 3px solid var(--content-surface-solid);
+  box-shadow: 0 0 0 3px var(--accent-light);
+  margin-top: 6px;
+  position: relative;
+  z-index: 1;
+}
+
+.experience-card {
+  background: var(--content-surface);
+  border: 1px solid var(--content-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+  transition: var(--transition);
+}
+
+.experience-card:hover {
+  border-color: var(--accent);
+  box-shadow: var(--shadow-md);
+}
+
+.experience-role {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0 0 var(--space-1);
+  color: var(--content-text);
+}
+
+.experience-company-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-3);
+}
+
+.experience-company {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.experience-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  font-size: 13px;
+  color: var(--content-muted);
+}
+
+.experience-meta span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.experience-summary {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--content-text-secondary);
+  margin: var(--space-4) 0 0;
+}
+
+.experience-highlights {
+  list-style: none;
+  padding: 0;
+  margin: var(--space-4) 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.experience-highlights li {
+  display: flex;
+  gap: var(--space-2);
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--content-text-secondary);
+}
+
+.experience-check {
+  color: var(--accent);
+  font-size: 13px;
+  margin-top: 5px;
+  flex-shrink: 0;
+}
+
+.experience-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: var(--space-4);
+}
+
+.experience-chip {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 5px;
+  background: var(--accent-light);
+  color: var(--accent);
+}
+
+/* ===================== */
+/* BUTTON SPINNER */
+/* ===================== */
+.btn-spinner {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.45);
+  border-top-color: #ffffff;
+  display: inline-block;
+  animation: btn-spin 0.7s linear infinite;
+}
+
+@keyframes btn-spin {
+  to { transform: rotate(360deg); }
+}
+
+@media (max-width: 768px) {
+  .experience-item {
+    grid-template-columns: 24px 1fr;
+    gap: var(--space-3);
+  }
+
+  .experience-card {
+    padding: var(--space-4);
+  }
+
+  .experience-role {
+    font-size: 18px;
   }
 }

@@ -18,12 +18,12 @@ const Footer: React.FC = () => {
               <div className="brand-logo">P</div>
               <div className="brand-text">
                 <span className="brand-name">Patrick Miguel</span>
-                <span className="brand-job">Software Developer</span>
+                <span className="brand-job">Full-Stack Developer &amp; QA Tester</span>
               </div>
             </motion.a>
             <p>
-              Building and testing responsive, functional web and mobile applications with modern technologies. 
-              Always eager to learn and collaborate on exciting projects.
+              Full-stack developer and QA tester building, securing, and testing production web and mobile
+              applications with modern technologies. Always eager to learn and collaborate on exciting projects.
             </p>
           </div>
 
@@ -32,6 +32,7 @@ const Footer: React.FC = () => {
             <ul>
               <li><a href="#hero">Home</a></li>
               <li><a href="#about">About</a></li>
+              <li><a href="#experience">Experience</a></li>
               <li><a href="#projects">Projects</a></li>
               <li><a href="#contact">Contact</a></li>
             </ul>

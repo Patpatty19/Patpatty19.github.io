@@ -15,7 +15,9 @@ const ThemeToggle: React.FC = () => {
     document.documentElement.setAttribute('data-theme', theme)
     try {
       localStorage.setItem('theme', theme)
-    } catch {}
+    } catch {
+      /* ignore write errors (e.g. storage disabled) */
+    }
   }, [theme])
 
   return (

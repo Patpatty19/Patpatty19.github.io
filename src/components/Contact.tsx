@@ -16,9 +16,10 @@ import Magnet from './reactbits/Magnet'
 
 
 // Load EmailJS configuration from environment variables (Vite exposes VITE_* vars)
-const EMAILJS_SERVICE_ID = (import.meta.env as any).VITE_EMAILJS_SERVICE_ID || ''
-const EMAILJS_TEMPLATE_ID = (import.meta.env as any).VITE_EMAILJS_TEMPLATE_ID || ''
-const EMAILJS_PUBLIC_KEY = (import.meta.env as any).VITE_EMAILJS_PUBLIC_KEY || ''
+const env = import.meta.env as unknown as Record<string, string | undefined>
+const EMAILJS_SERVICE_ID = env.VITE_EMAILJS_SERVICE_ID || ''
+const EMAILJS_TEMPLATE_ID = env.VITE_EMAILJS_TEMPLATE_ID || ''
+const EMAILJS_PUBLIC_KEY = env.VITE_EMAILJS_PUBLIC_KEY || ''
 
 const Contact: React.FC = () => {
   const ref = useRef(null)
@@ -66,7 +67,7 @@ const Contact: React.FC = () => {
           </GradientText>
         </h2>
         <p className="section-description">
-          Have a project in mind or want to collaborate? Feel free to reach out!
+          Open to full-time full-stack development and QA roles, projects, and collaboration
         </p>
       </motion.div>
 
@@ -79,7 +80,7 @@ const Contact: React.FC = () => {
         <div className="contact-info">
           <motion.div className="contact-intro" variants={itemVariants}>
             <p className="contact-intro-text">
-              I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision. Whether you have a question or just want to say hi, I'll try my best to get back to you!
+              I'm currently open to full-time full-stack development and QA roles. If you have an opportunity, a project idea, or just want to connect, feel free to reach out — I'll get back to you as soon as I can.
             </p>
           </motion.div>
 
@@ -121,7 +122,7 @@ const Contact: React.FC = () => {
               </div>
               <div className="contact-method-content">
                 <h4>Location</h4>
-                <p>Philippines</p>
+                <p>Quezon City, Metro Manila</p>
               </div>
             </motion.div>
           </motion.div>
@@ -233,13 +234,7 @@ const Contact: React.FC = () => {
             >
               {isSubmitting ? (
                 <>
-                  <motion.span
-                    animate={{ rotate: 360 }}
-                    transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
-                    style={{ display: 'inline-block' }}
-                  >
-                    ⏳
-                  </motion.span>
+                  <span className="btn-spinner" aria-hidden="true" />
                   Sending...
                 </>
               ) : (
