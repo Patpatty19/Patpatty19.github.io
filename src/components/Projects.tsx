@@ -7,7 +7,7 @@ import GradientText from './reactbits/GradientText'
 const projects = [
   {
     title: 'Lakbay',
-    description: 'A mobile application enhancing travel experiences through scenic route navigation and local culture promotion. Developed as our Thesis project.',
+    description: 'A mobile application enhancing travel experiences through scenic route navigation and local culture promotion. Developed as our thesis, I served as Lead Research Documentation Coordinator and Dataset Specialist — helping build a six-region geospatial tourism dataset and validate a machine-learning route-optimization model.',
     tech: ['Kotlin', 'Python', 'Firebase'],
     category: 'Mobile Application',
     githubUrl: 'https://github.com/Patpatty19/Lakbay_Repository',

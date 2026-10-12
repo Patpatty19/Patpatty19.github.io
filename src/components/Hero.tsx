@@ -55,7 +55,7 @@ const Hero: React.FC = () => {
         <motion.div variants={itemVariants} className="hero-role">
           <span className="hero-role-prefix">I'm a </span>
           <TypingText
-            words={['Software Developer', 'Web Developer', 'QA Tester', 'Mobile Developer']}
+            words={['Full-Stack Developer', 'QA Tester', 'Software Developer', 'Mobile Developer']}
             className="hero-role-typing"
             typingSpeed={80}
             deletingSpeed={40}
@@ -65,7 +65,7 @@ const Hero: React.FC = () => {
 
         <motion.div variants={itemVariants}>
           <BlurText
-            text="Building and testing responsive, functional systems using modern frameworks and programming languages such as Java, Flutter, Kotlin, React, and PHP."
+            text="Full-stack developer and QA tester building, securing, and testing production web platforms with Next.js, React, TypeScript, and Supabase — plus web and mobile work in Java, Flutter, Kotlin, and PHP/Laravel."
             className="hero-subtitle"
             delay={50}
             animateBy="words"

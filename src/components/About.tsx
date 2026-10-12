@@ -23,18 +23,30 @@ import {
   SiMysql,
   SiFirebase,
   SiCplusplus,
-  SiGit
+  SiGit,
+  SiNextdotjs,
+  SiNodedotjs,
+  SiSupabase,
+  SiPostgresql,
+  SiJest
 } from 'react-icons/si'
-import { FaJava } from 'react-icons/fa'
+import { FaJava, FaVial } from 'react-icons/fa'
 import { TbBrandKotlin, TbBrandCSharp } from 'react-icons/tb'
 import GradientText from './reactbits/GradientText'
 import Magnet from './reactbits/Magnet'
 
 const skills = [
-  { name: 'HTML/CSS', icon: SiHtml5, color: '#E34F26' },
-  { name: 'JavaScript', icon: SiJavascript, color: '#F7DF1E' },
   { name: 'TypeScript', icon: SiTypescript, color: '#3178C6' },
+  { name: 'JavaScript', icon: SiJavascript, color: '#F7DF1E' },
   { name: 'React', icon: SiReact, color: '#61DAFB' },
+  { name: 'Next.js', icon: SiNextdotjs, color: '#64748b' },
+  { name: 'Node.js', icon: SiNodedotjs, color: '#339933' },
+  { name: 'HTML/CSS', icon: SiHtml5, color: '#E34F26' },
+  { name: 'PostgreSQL', icon: SiPostgresql, color: '#4169E1' },
+  { name: 'Supabase', icon: SiSupabase, color: '#3ECF8E' },
+  { name: 'SQL', icon: SiMysql, color: '#4479A1' },
+  { name: 'Jest', icon: SiJest, color: '#C21325' },
+  { name: 'Playwright', icon: FaVial, color: '#2EAD33' },
   { name: 'Python', icon: SiPython, color: '#3776AB' },
   { name: 'Java', icon: FaJava, color: '#ED8B00' },
   { name: 'C++', icon: SiCplusplus, color: '#00599C' },
@@ -43,26 +55,30 @@ const skills = [
   { name: 'Kotlin', icon: TbBrandKotlin, color: '#7F52FF' },
   { name: 'C#', icon: TbBrandCSharp, color: '#512BD4' },
   { name: 'Flutter', icon: SiFlutter, color: '#02569B' },
-  { name: 'SQL', icon: SiMysql, color: '#4479A1' },
   { name: 'Firebase', icon: SiFirebase, color: '#FFCA28' },
   { name: 'Git', icon: SiGit, color: '#F05032' },
 ]
 
 const awards = [
   {
+    icon: FaTrophy,
+    title: 'Multiple Innovation Honors, 3rd Inabel Awards',
+    org: 'Design & Experience, Internet of Things, and Enterprise Systems Innovation · 2026',
+  },
+  {
     icon: FaCertificate,
     title: 'Alibaba Cloud Certification',
     org: 'Alibaba Cloud - "AI Journey with Alibaba Cloud" seminar',
   },
   {
-    icon: FaTrophy,
+    icon: FaAward,
     title: '2nd Runner-Up, Shark Tank Convention',
     org: 'CIIT College - Technopreneurship Event',
   },
   {
     icon: FaMedal,
     title: 'Best Industry-Ready Project (Nominee)',
-    org: '2nd Inabel Awards - Weaving the Best Filipino Creatives',
+    org: '2nd Inabel Awards - Weaving the Best Filipino Creatives · 2025',
   },
   {
     icon: FaAward,
@@ -112,7 +128,7 @@ const About: React.FC = () => {
           </GradientText>
         </h2>
         <p className="section-description">
-          A passionate developer and tester focused on creating impactful digital experiences
+          Full-stack developer and QA tester focused on building, securing, and testing production software
         </p>
       </motion.div>
 
@@ -136,9 +152,12 @@ const About: React.FC = () => {
           </motion.div>
 
           <motion.p className="about-intro" variants={itemVariants}>
-            I'm a <strong>Software Engineering student</strong> at CIIT College of Arts and Technology 
-            with demonstrated expertise in software development. Passionate about building and testing responsive 
-            functional systems using modern frameworks.
+            I'm a <strong>Software Engineering student</strong> at CIIT College of Arts and Technology
+            and a full-stack developer and QA tester with internship experience building, securing, and
+            testing a production web platform. Skilled in Next.js, React, TypeScript, and Supabase
+            (PostgreSQL), with strengths in authentication, application security, and software quality
+            assurance. I combine web and mobile development (Java, Flutter, Kotlin, PHP/Laravel) with a
+            proven ability to ship and review production code in fast-moving teams.
           </motion.p>
         </div>
 
@@ -189,7 +208,7 @@ const About: React.FC = () => {
               <FaGraduationCap className="stat-icon" />
               <div>
                 <span className="stat-label">Education</span>
-                <span className="stat-value">BSc. Software Engineering</span>
+                <span className="stat-value">BS Computer Science, Major in Software Engineering</span>
                 <span className="stat-sub">CIIT College • 2022 - Present</span>
               </div>
             </div>
@@ -208,6 +227,14 @@ const About: React.FC = () => {
                 <span className="stat-sub">ATS-Formatted PDF</span>
               </div>
             </motion.a>
+            <div className="stat-item">
+              <FaBriefcase className="stat-icon" />
+              <div>
+                <span className="stat-label">Experience</span>
+                <span className="stat-value">Full-Stack Developer &amp; QA Tester</span>
+                <span className="stat-sub">WyzLab Solutions • 2026</span>
+              </div>
+            </div>
             <div className="stat-item">
               <FaBriefcase className="stat-icon" />
               <div>

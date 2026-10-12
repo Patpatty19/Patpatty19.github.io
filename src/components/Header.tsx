@@ -3,11 +3,10 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { HiMenuAlt3, HiX } from 'react-icons/hi'
 import { FaGithub, FaLinkedinIn, FaEnvelope } from 'react-icons/fa'
 import ThemeToggle from './ThemeToggle'
-import Magnet from './reactbits/Magnet'
-import DecryptedText from './reactbits/DecryptedText'
 
 const navLinks = [
   { href: '#about', label: 'About' },
+  { href: '#experience', label: 'Experience' },
   { href: '#projects', label: 'Projects' },
   { href: '#contact', label: 'Contact' },
 ]
@@ -61,13 +60,8 @@ const Header: React.FC = () => {
         >
           <div className="brand-logo">P</div>
           <div className="brand-text">
-            <DecryptedText 
-              text="Patrick Miguel" 
-              className="brand-name"
-              speed={40}
-              maxIterations={15}
-            />
-            <span className="brand-job">Software Developer</span>
+            <span className="brand-name">Patrick Miguel</span>
+            <span className="brand-job">Full-Stack Developer &amp; QA Tester</span>
           </div>
         </motion.a>
 
@@ -79,18 +73,17 @@ const Header: React.FC = () => {
           
           <div className="mobile-nav-links">
             {navLinks.map((link, index) => (
-              <Magnet key={link.href} magnetStrength={3}>
-                <motion.a
-                  href={link.href}
-                  className={activeSection === link.href.slice(1) ? 'active' : ''}
-                  onClick={() => setOpen(false)}
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                >
-                  {link.label}
-                </motion.a>
-              </Magnet>
+              <motion.a
+                key={link.href}
+                href={link.href}
+                className={activeSection === link.href.slice(1) ? 'active' : ''}
+                onClick={() => setOpen(false)}
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: index * 0.1 }}
+              >
+                {link.label}
+              </motion.a>
             ))}
           </div>
 
